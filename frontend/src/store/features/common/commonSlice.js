@@ -9,9 +9,10 @@ const commonSlice = createSlice({
   initialState: commomIntialState,
   reducers: {
     toggleSidebar: Actions.toggleSidebarAction,
+    setCommonKey: Actions.setCommonKeyAction,
   },
 });
 
-export const { toggleSidebar } = commonSlice.actions;
+export const { toggleSidebar, setCommonKey } = commonSlice.actions;
 
 export default commonSlice.reducer;
