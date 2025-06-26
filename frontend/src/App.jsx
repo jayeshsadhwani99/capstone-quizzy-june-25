@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Loading from "./components/common/Loading";
 import TeacherTemplatesPage from "./pages/teacher/templates";
+import CreateTemplatePage from "./pages/teacher/templates/create";
 
 const Home = lazy(() => import("./pages/index"));
 const TeacherDashboard = lazy(() => import("./pages/teacher/dashboard"));
@@ -18,6 +19,10 @@ function App() {
             <Route
               path="/teacher/templates"
               element={<TeacherTemplatesPage />}
+            />
+            <Route
+              path="/teacher/templates/create"
+              element={<CreateTemplatePage />}
             />
           </Route>
         </Routes>
