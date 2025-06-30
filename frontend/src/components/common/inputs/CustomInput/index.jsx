@@ -15,7 +15,7 @@ function CustomInput(props) {
     <div className="flex flex-col gap-1 w-full">
       <div className={`${handleLabelPosition(labelPosition)} flex gap-1`}>
         {showLabel && label && (
-          <label className="text-sm text-gray-500 shrink-0" for={id}>
+          <label className="text-sm text-gray-500 shrink-0" htmlFor={id}>
             {label}
           </label>
         )}

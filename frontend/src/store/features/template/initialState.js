@@ -3,4 +3,5 @@ export const templateInitialState = {
   description: "",
   subject: "",
   gradeLevel: "",
+  questionTypes: [],
 };
