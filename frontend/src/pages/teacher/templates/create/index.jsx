@@ -28,7 +28,7 @@ function CreateTemplatePage() {
         label={
           <div className="flex items-center gap-2 text-sm">
             <PlusIcon size={16} />{" "}
-            {questionOptions.find((q) => q.id === questionType).label ??
+            {questionOptions.find((q) => q.id === questionType)?.label ??
               "Add Question Type"}
           </div>
         }
