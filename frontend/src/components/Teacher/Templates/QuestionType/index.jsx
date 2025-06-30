@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { templateSelector } from "../../../../store/features/template/selectors";
 import { updateQuestionTypeData } from "../../../../store/features/template/templateSlice";
 import { difficultyOptions } from "../../../../utils";
+import Options from "./Options";
 
 function QuestionType({ index }) {
   const dispatch = useDispatch();
@@ -61,6 +62,8 @@ function QuestionType({ index }) {
           label="Custom AI prompt"
           placeholder="e.g, Make sure each question is unique and not similar to the previous one"
         />
+
+        <Options index={index} />
       </form>
     </div>
   );

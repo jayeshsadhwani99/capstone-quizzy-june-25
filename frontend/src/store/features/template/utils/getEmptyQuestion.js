@@ -14,7 +14,6 @@ export const getEmptyQuestion = ({ type = QuestionTypes.MULTIPLE_CHOICE }) => {
         includeExplanations: false,
         shuffleOptions: false,
         enableNegativeMarking: false,
-        negativeScore: 0,
       },
     },
   };
