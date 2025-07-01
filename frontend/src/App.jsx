@@ -28,11 +28,19 @@ function App() {
               element={<CreateTemplatePage />}
             />
             <Route
+              path="/teacher/templates/:id"
+              element={<CreateTemplatePage />}
+            />
+            <Route
               path="/teacher/assesments"
               element={<TeacherAssesmentsPage />}
             />
             <Route
               path="/teacher/assesments/create"
+              element={<CreateAssesmentPage />}
+            />
+            <Route
+              path="/teacher/assesments/:id"
               element={<CreateAssesmentPage />}
             />
           </Route>
