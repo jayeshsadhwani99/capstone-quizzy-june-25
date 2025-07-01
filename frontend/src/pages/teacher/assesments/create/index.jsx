@@ -5,7 +5,11 @@ import { InputTypes } from "../../../../components/common/inputs/CustomInput/typ
 import { useSelector } from "react-redux";
 import { assesmentsSelector } from "../../../../store/features/assesments/selectors";
 import { useDispatch } from "react-redux";
-import { setAssesmentKey } from "../../../../store/features/assesments/assesmentSlice";
+import {
+  resetAssesmentsState,
+  setAssesmentKey,
+} from "../../../../store/features/assesments/assesmentSlice";
+import { useEffect } from "react";
 
 function CreateAssesmentPage() {
   const dispatch = useDispatch();
@@ -18,6 +22,13 @@ function CreateAssesmentPage() {
   const handleChange = (key, value) => {
     dispatch(setAssesmentKey({ key, value }));
   };
+
+  useEffect(() => {
+    return () => {
+      dispatch(resetAssesmentsState());
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div>
