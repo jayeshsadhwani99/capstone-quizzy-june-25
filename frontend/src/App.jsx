@@ -4,6 +4,8 @@ import Loading from "./components/common/Loading";
 import TeacherTemplatesPage from "./pages/teacher/templates";
 import CreateTemplatePage from "./pages/teacher/templates/create";
 import NotFoundPage from "./pages/404";
+import TeacherAssesmentsPage from "./pages/teacher/assesments";
+import CreateAssesmentPage from "./pages/teacher/assesments/create";
 
 const Home = lazy(() => import("./pages/index"));
 const TeacherDashboard = lazy(() => import("./pages/teacher/dashboard"));
@@ -24,6 +26,14 @@ function App() {
             <Route
               path="/teacher/templates/create"
               element={<CreateTemplatePage />}
+            />
+            <Route
+              path="/teacher/assesments"
+              element={<TeacherAssesmentsPage />}
+            />
+            <Route
+              path="/teacher/assesments/create"
+              element={<CreateAssesmentPage />}
             />
           </Route>
 
