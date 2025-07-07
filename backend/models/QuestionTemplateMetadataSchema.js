@@ -1,3 +1,5 @@
+import { Schema } from "mongoose";
+
 export const QuestionTemplateMetadataSchema = new Schema(
   {
     includeHints: {

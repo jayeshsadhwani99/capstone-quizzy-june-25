@@ -1,4 +1,4 @@
 // Template
-export * from "./QuestionTemplateMetadataSchema";
-export * from "./QuestionTemplateSchema";
-export * from "./Template";
+export * from "./QuestionTemplateMetadataSchema.js";
+export * from "./QuestionTemplateSchema.js";
+export * from "./Template.js";

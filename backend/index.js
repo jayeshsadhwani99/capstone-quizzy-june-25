@@ -1,6 +1,8 @@
 import { config } from "dotenv";
 import express, { json } from "express";
 import { connect } from "mongoose";
+import { templateRouter } from "./routes/index.js";
+import { errorHandler } from "./utils/errorHandler.js";
 
 config();
 
@@ -12,6 +14,10 @@ app.use(json());
 connect(process.env.MONGODB_URI)
   .then(() => console.log("✅ MongoDB connected"))
   .catch((err) => console.error("❌ MongoDB connection error:", err));
+
+app.use("/api/templates", templateRouter);
+
+app.use(errorHandler);
 
 // Example route
 app.get("/", (req, res) => {
