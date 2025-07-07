@@ -1,5 +1,23 @@
 import { Template } from "../models/index.js";
 
+export const createTemplate = async (req, res, next) => {
+  try {
+    const { name, description, questions } = req.body;
+
+    // TODO: Implement the logic to create a template
+
+    return res.status(201).json({
+      success: true,
+      data: null,
+    });
+  } catch (e) {
+    const error = new Error("Failed to create template", {
+      cause: e,
+    });
+    return next(error);
+  }
+};
+
 export const getAllTemplates = async (req, res, next) => {
   try {
     const templates = await Template.find();
