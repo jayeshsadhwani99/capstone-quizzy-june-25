@@ -6,8 +6,15 @@ import QuestionTypes from "../../../../components/Teacher/Templates/QuestionType
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { resetTemplateState } from "../../../../store/features/template/templateSlice";
+import { useParams } from "react-router-dom";
+import { useGetTemplateQuery } from "../../../../store/api";
 
 function CreateTemplatePage() {
+  const { id } = useParams();
+  const { isLoading } = useGetTemplateQuery(id, {
+    refetchOnMountOrArgChange: true,
+    skip: !id,
+  });
   const { setHeading, setSubheading } = useHeading();
   const dispatch = useDispatch();
   setHeading("Create Template");
@@ -19,6 +26,10 @@ function CreateTemplatePage() {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
