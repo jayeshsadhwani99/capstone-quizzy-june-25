@@ -7,7 +7,7 @@ const getTemplateApi = apiSlice.injectEndpoints({
   endpoints: (build) => ({
     getTemplate: build.query({
       query: (id) => ({
-        url: `/${GET_TEMPLATE_URL}/${id}`,
+        url: `${GET_TEMPLATE_URL}/${id}`,
         method: "GET",
       }),
       transformResponse: (response) => {
