@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import {
   useDeleteTemplateMutation,
   useGetAllTemplatesQuery,
-} from "../../../../store/api";
+} from "../../../../store/features/template/api";
 
 export const useTemplatesData = () => {
   const navigate = useNavigate();
