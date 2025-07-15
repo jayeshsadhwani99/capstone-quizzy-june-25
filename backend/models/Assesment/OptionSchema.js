@@ -1,5 +1,5 @@
 import { Schema } from "mongoose";
-import { QuestionTypeEnum } from "../../types";
+import { QuestionTypeEnum } from "../../types/index.js";
 
 export const OptionSchema = new Schema(
   {

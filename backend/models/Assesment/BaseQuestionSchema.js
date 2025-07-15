@@ -1,5 +1,5 @@
 import { Schema } from "mongoose";
-import { QuestionDifficultyEnum, QuestionTypeEnum } from "../../types";
+import { QuestionDifficultyEnum, QuestionTypeEnum } from "../../types/index.js";
 
 export const BaseQuestionSchema = new Schema(
   {

@@ -1,7 +1,7 @@
 import { model, Schema } from "mongoose";
-import { AssesmentStatusEnum, QuestionTypeEnum } from "../../types";
-import { BaseQuestionSchema } from "./BaseQuestionSchema";
-import { OptionSchema } from "./OptionSchema";
+import { AssesmentStatusEnum, QuestionTypeEnum } from "../../types/index.js";
+import { BaseQuestionSchema } from "./BaseQuestionSchema.js";
+import { OptionSchema } from "./OptionSchema.js";
 
 const AssesmentSchema = new Schema(
   {
