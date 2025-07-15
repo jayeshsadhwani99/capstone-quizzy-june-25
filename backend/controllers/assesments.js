@@ -1,6 +1,6 @@
 import { Assesment } from "../models/index.js";
 
-export const createAssesment = async (req, res, next) => {
+export const createAssessment = async (req, res, next) => {
   try {
     // TODO: Implement the logic to create an assesment
 
@@ -15,23 +15,23 @@ export const createAssesment = async (req, res, next) => {
   }
 };
 
-export const getAllAssesments = async (req, res, next) => {
+export const getAllAssessments = async (req, res, next) => {
   try {
-    const assesments = await Assesment.find();
+    const assessments = await Assesment.find();
 
     return res.status(200).json({
       success: true,
-      data: assesments,
+      data: assessments,
     });
   } catch (e) {
-    const error = new Error("Failed to fetch assesments", {
+    const error = new Error("Failed to fetch assessments", {
       cause: e,
     });
     return next(error);
   }
 };
 
-export const getAssesmentById = async (req, res, next) => {
+export const getAssessmentById = async (req, res, next) => {
   try {
     const { id } = req.params;
 
@@ -42,21 +42,21 @@ export const getAssesmentById = async (req, res, next) => {
       return next(error);
     }
 
-    const assesment = await Assesment.findById(id);
+    const assessment = await Assesment.findById(id);
 
     return res.status(200).json({
       success: true,
-      data: assesment,
+      data: assessment,
     });
   } catch (e) {
-    const error = new Error("Failed to fetch assesment by ID", {
+    const error = new Error("Failed to fetch assessment by ID", {
       cause: e,
     });
     return next(error);
   }
 };
 
-export const deleteAssesmentById = async (req, res, next) => {
+export const deleteAssessmentById = async (req, res, next) => {
   const { id } = req.params;
   try {
     if (!id) {
@@ -66,14 +66,14 @@ export const deleteAssesmentById = async (req, res, next) => {
       return next(error);
     }
 
-    const assesment = await Assesment.findByIdAndDelete(id);
+    const assessment = await Assesment.findByIdAndDelete(id);
 
     return res.status(200).json({
       success: true,
-      data: assesment,
+      data: assessment,
     });
   } catch (e) {
-    const error = new Error(`Failed to delete assesment by ID: ${id}`, {
+    const error = new Error(`Failed to delete assessment by ID: ${id}`, {
       cause: e,
     });
     return next(error);

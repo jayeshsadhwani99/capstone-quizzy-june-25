@@ -1,14 +1,14 @@
 import { Router } from "express";
 import {
-  createAssesment,
-  deleteAssesmentById,
-  getAllAssesments,
-  getAssesmentById,
+  createAssessment,
+  deleteAssessmentById,
+  getAllAssessments,
+  getAssessmentById,
 } from "../controllers/index.js";
 
-export const assesmentsRouter = Router();
+export const assessmentsRouter = Router();
 
-assesmentsRouter.post("/", createAssesment);
-assesmentsRouter.get("/", getAllAssesments);
-assesmentsRouter.get("/:id", getAssesmentById);
-assesmentsRouter.delete("/:id", deleteAssesmentById);
+assessmentsRouter.post("/", createAssessment);
+assessmentsRouter.get("/", getAllAssessments);
+assessmentsRouter.get("/:id", getAssessmentById);
+assessmentsRouter.delete("/:id", deleteAssessmentById);
