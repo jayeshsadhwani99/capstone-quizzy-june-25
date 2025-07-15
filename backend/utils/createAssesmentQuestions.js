@@ -1,4 +1,4 @@
-import { Template } from "../models";
+import { Template } from "../models/index.js";
 
 export const createAssesmentQuestions = async (assessment) => {
   let questions = [];
