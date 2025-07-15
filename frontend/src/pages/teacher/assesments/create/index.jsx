@@ -10,8 +10,17 @@ import {
   setAssesmentKey,
 } from "../../../../store/features/assesments/assesmentSlice";
 import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useGetAssesmentQuery } from "../../../../store/features/assesments/api";
+import { useGetAllTemplatesQuery } from "../../../../store/features/template/api";
 
 function CreateAssesmentPage() {
+  const { id } = useParams();
+  const { isLoading } = useGetAssesmentQuery(id, {
+    refetchOnMountOrArgChange: true,
+    skip: !id,
+  });
+  const { data: templates = [] } = useGetAllTemplatesQuery();
   const dispatch = useDispatch();
   const { setHeading, setSubheading } = useHeading();
   const { template, title, description } = useSelector(assesmentsSelector);
@@ -30,6 +39,10 @@ function CreateAssesmentPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div>
       <form className="flex flex-col gap-4">
@@ -38,6 +51,11 @@ function CreateAssesmentPage() {
           label="Select Template"
           value={template || "Choose from Templates"}
           onChange={(value) => handleChange("template", value)}
+          options={templates.map((template) => ({
+            ...template,
+            id: template._id,
+            label: template.title,
+          }))}
         />
         <CustomInput
           inputType={InputTypes.TEXT}
