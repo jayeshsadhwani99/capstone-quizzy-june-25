@@ -21,6 +21,7 @@ const AssesmentSchema = new Schema(
     status: {
       type: String,
       enum: Object.values(AssesmentStatusEnum),
+      default: AssesmentStatusEnum.PENDING,
       required: true,
     },
     publishedAt: {
@@ -54,7 +55,7 @@ AssesmentSchema.path("questions").discriminator(
   QuestionTypeEnum.SHORT_ANSWER_QUESTION,
   new Schema({
     sampleAnswer: {
-      type: [String],
+      type: String,
     },
   }),
 );
@@ -63,7 +64,7 @@ AssesmentSchema.path("questions").discriminator(
   QuestionTypeEnum.LONG_ANSWER_QUESTION,
   new Schema({
     sampleAnswer: {
-      type: [String],
+      type: String,
     },
   }),
 );

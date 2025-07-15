@@ -2,10 +2,21 @@ import { Assesment } from "../models/index.js";
 
 export const createAssessment = async (req, res, next) => {
   try {
-    // TODO: Implement the logic to create an assesment
+    const { questions = [] } = req.body;
+
+    const totalMarks = questions.reduce(
+      (acc, val) => acc + (val.marks ?? 0),
+      0,
+    );
+
+    const assessment = new Assesment(req.body);
+    assessment.totalMarks = totalMarks;
+
+    await assessment.save();
 
     return res.status(201).json({
       success: true,
+      assessment,
     });
   } catch (e) {
     const error = new Error("Failed to create assement", {
