@@ -13,6 +13,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useGetAssesmentQuery } from "../../../../store/features/assesments/api";
 import { useGetAllTemplatesQuery } from "../../../../store/features/template/api";
+import CreateAssessmentButton from "../../../../components/Teacher/Assessments/CreateAssessmentButton";
 
 function CreateAssesmentPage() {
   const { id } = useParams();
@@ -71,6 +72,8 @@ function CreateAssesmentPage() {
           label="Assesment Description"
           placeholder="e.g, This is a quiz to test your knowledge of Math"
         />
+
+        <CreateAssessmentButton />
       </form>
     </div>
   );
