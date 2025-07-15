@@ -1,13 +1,34 @@
 import { Assesment } from "../models/index.js";
+import {
+  calculateTotalMarks,
+  createAssesmentQuestions,
+} from "../utils/index.js";
+
+export const createAssesmentFromUI = async (req, res, next) => {};
+try {
+  const assessment = new Assesment(req.body);
+
+  const questions = await createAssesmentQuestions(assessment);
+  const totalMarks = calculateTotalMarks(questions);
+
+  assessment.totalMarks = totalMarks;
+
+  await assessment.save();
+
+  return res.status(201).json({
+    success: true,
+    assessment,
+  });
+} catch (e) {
+  const error = new Error("Failed to create assement from UI", {
+    cause: e,
+  });
+}
 
 export const createAssessment = async (req, res, next) => {
   try {
     const { questions = [] } = req.body;
-
-    const totalMarks = questions.reduce(
-      (acc, val) => acc + (val.marks ?? 0),
-      0,
-    );
+    const totalMarks = calculateTotalMarks(questions);
 
     const assessment = new Assesment(req.body);
     assessment.totalMarks = totalMarks;

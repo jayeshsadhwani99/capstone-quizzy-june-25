@@ -1,5 +1,6 @@
 import { Router } from "express";
 import {
+  createAssesmentFromUI,
   createAssessment,
   deleteAssessmentById,
   getAllAssessments,
@@ -9,6 +10,7 @@ import {
 export const assessmentsRouter = Router();
 
 assessmentsRouter.post("/", createAssessment);
+assessmentsRouter.post("/ai", createAssesmentFromUI);
 assessmentsRouter.get("/", getAllAssessments);
 assessmentsRouter.get("/:id", getAssessmentById);
 assessmentsRouter.delete("/:id", deleteAssessmentById);
