@@ -50,7 +50,7 @@ export const createAssessment = async (req, res, next) => {
 
 export const getAllAssessments = async (req, res, next) => {
   try {
-    const assessments = await Assesment.find();
+    const assessments = await Assesment.find({}).populate("template");
 
     return res.status(200).json({
       success: true,
