@@ -9,9 +9,10 @@ export const createAssesmentFromUI = async (req, res, next) => {
     const assessment = new Assesment(req.body);
 
     const questions = await createAssesmentQuestions(assessment);
-    const totalMarks = calculateTotalMarks(questions);
+    const totalMarks = calculateTotalMarks(questions ?? []);
 
     assessment.totalMarks = totalMarks;
+    assessment.questions = questions;
 
     await assessment.save();
 
@@ -23,6 +24,7 @@ export const createAssesmentFromUI = async (req, res, next) => {
     const error = new Error("Failed to create assement from UI", {
       cause: e,
     });
+    return next(error);
   }
 };
 

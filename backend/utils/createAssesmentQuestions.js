@@ -1,7 +1,18 @@
+import { config } from "dotenv";
 import { Template } from "../models/index.js";
+import { GoogleGenAI } from "@google/genai";
+import {
+  getQuestionListGenerationPrompt,
+  questionsListResponseSchema,
+} from "../ai/index.js";
+
+config();
+
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+
+const ai = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
 
 export const createAssesmentQuestions = async (assessment) => {
-  let questions = [];
   const { template: templateObjectId } = assessment;
   const templateId = templateObjectId.toString();
   if (!templateId) return;
@@ -9,10 +20,24 @@ export const createAssesmentQuestions = async (assessment) => {
   const template = await Template.findById(templateId);
   if (!template) return;
 
-  const prompt = ```
-  This is where we we will pass the prompt
-  ```;
+  const prompt = getQuestionListGenerationPrompt(assessment, template);
 
-  // TODO: Call AI to create questions
-  return questions;
+  try {
+    const response = await ai.models.generateContent({
+      model: "gemini-2.5-flash",
+      contents: prompt,
+      config: {
+        responseMimeType: "application/json",
+        responseSchema: questionsListResponseSchema,
+      },
+    });
+
+    const questions = JSON.parse(response.text);
+
+    return questions;
+  } catch (error) {
+    throw new Error("Failed to create questiins from AI", {
+      cause: error,
+    });
+  }
 };
