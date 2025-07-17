@@ -16,7 +16,7 @@ function CreateAssessmentButton() {
     if (isLoading) return;
     try {
       await triggerCreate(assesment).unwrap();
-      navigate("/teacher/assements");
+      navigate("/teacher/assesments");
     } catch (error) {
       console.log("There was an error creating the assessments: ", error);
     }
