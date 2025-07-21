@@ -14,6 +14,8 @@ import { useParams } from "react-router-dom";
 import { useGetAssesmentQuery } from "../../../../store/features/assesments/api";
 import { useGetAllTemplatesQuery } from "../../../../store/features/template/api";
 import CreateAssessmentButton from "../../../../components/Teacher/Assessments/CreateAssessmentButton";
+import Question from "../../../../components/common/Question";
+import { QuestionTypes } from "../../../../types";
 
 function CreateAssesmentPage() {
   const { id } = useParams();
@@ -74,6 +76,8 @@ function CreateAssesmentPage() {
         />
 
         <CreateAssessmentButton />
+
+        <Question type={QuestionTypes.MULTIPLE_CHOICE} />
       </form>
     </div>
   );
