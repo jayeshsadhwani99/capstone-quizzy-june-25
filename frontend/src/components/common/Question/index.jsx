@@ -6,8 +6,6 @@ import HintComponent from "./components/HintComponent/index.jsx";
 import { extractAnswer } from "./utils/extractAnswer.js";
 
 function Question({ question }) {
-  console.log("question", question);
-
   return (
     <div className="flex flex-col gap-4">
       {question.question && (
@@ -16,7 +14,7 @@ function Question({ question }) {
       <HintComponent hints={question.hints} />
 
       <div>
-        <HandleQuestionRender type={question.type} />
+        <HandleQuestionRender question={question} />
       </div>
 
       <div>
