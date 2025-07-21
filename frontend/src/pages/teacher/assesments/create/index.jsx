@@ -81,7 +81,11 @@ function CreateAssesmentPage() {
           <h1 className="text-3xl font-bold">Generated Questions</h1>
           <div className="flex flex-col gap-4 mt-4">
             {questions.map((question, index) => (
-              <FullQuestionComponent question={question} index={index} />
+              <FullQuestionComponent
+                key={question._id}
+                question={question}
+                index={index}
+              />
             ))}
           </div>
         </div>

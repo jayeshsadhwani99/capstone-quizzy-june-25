@@ -3,25 +3,28 @@ import HandleQuestionRender from "./HandleQuestionRender.jsx";
 import ExplanationComponent from "./components/ExplanationComponent/index.jsx";
 import AnswerComponent from "./components/AnswerComponent/index.jsx";
 import HintComponent from "./components/HintComponent/index.jsx";
+import { extractAnswer } from "./utils/extractAnswer.js";
 
 function Question({ question }) {
+  console.log("question", question);
+
   return (
     <div className="flex flex-col gap-4">
-      <h2 className="text-2xl font-bold">
-        What is the primary use of react hooks?
-      </h2>
-      <HintComponent hints={[]} />
+      {question.question && (
+        <h2 className="text-2xl font-bold">{question.question}</h2>
+      )}
+      <HintComponent hints={question.hints} />
 
       <div>
         <HandleQuestionRender type={question.type} />
       </div>
 
       <div>
-        <AnswerComponent answer="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo, accusantium?" />
+        <AnswerComponent answer={extractAnswer(question)} />
       </div>
 
       <div>
-        <ExplanationComponent explanation="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Explicabo, accusantium?" />
+        <ExplanationComponent explanations={question.explanations} />
       </div>
     </div>
   );
