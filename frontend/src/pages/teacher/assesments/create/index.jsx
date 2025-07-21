@@ -14,8 +14,7 @@ import { useParams } from "react-router-dom";
 import { useGetAssesmentQuery } from "../../../../store/features/assesments/api";
 import { useGetAllTemplatesQuery } from "../../../../store/features/template/api";
 import CreateAssessmentButton from "../../../../components/Teacher/Assessments/CreateAssessmentButton";
-import Question from "../../../../components/common/Question";
-import { QuestionTypes } from "../../../../types";
+import FullQuestionComponent from "../../../../components/common/Question/FullQuestionComponent";
 
 function CreateAssesmentPage() {
   const { id } = useParams();
@@ -26,7 +25,8 @@ function CreateAssesmentPage() {
   const { data: templates = [] } = useGetAllTemplatesQuery();
   const dispatch = useDispatch();
   const { setHeading, setSubheading } = useHeading();
-  const { template, title, description } = useSelector(assesmentsSelector);
+  const { template, title, description, questions } =
+    useSelector(assesmentsSelector);
 
   setHeading("Create Assesment");
   setSubheading("This will help you create multiple assesments");
@@ -77,7 +77,14 @@ function CreateAssesmentPage() {
 
         <CreateAssessmentButton />
 
-        <Question type={QuestionTypes.MULTIPLE_CHOICE} />
+        <div>
+          <h1 className="text-3xl font-bold">Generated Questions</h1>
+          <div className="flex flex-col gap-4 mt-4">
+            {questions.map((question, index) => (
+              <FullQuestionComponent question={question} index={index} />
+            ))}
+          </div>
+        </div>
       </form>
     </div>
   );
