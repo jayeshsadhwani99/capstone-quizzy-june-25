@@ -4,12 +4,17 @@ import { useSelector } from "react-redux";
 import { assesmentsSelector } from "../../../../store/features/assesments/selectors";
 import PreviousButton from "./PreviousButton";
 import NextButton from "./NextButton";
+import ChipsComponent from "../../../common/Question/components/ChipsComponent";
 
 function AssesmentQuestion() {
   const { questions, currentQuestionIndex } = useSelector(assesmentsSelector);
 
   return (
     <main className="flex-1 h-full p-2 pl-0 overflow-auto">
+      <ChipsComponent
+        question={questions[currentQuestionIndex]}
+        index={currentQuestionIndex}
+      />
       <Question
         question={questions[currentQuestionIndex]}
         config={{
