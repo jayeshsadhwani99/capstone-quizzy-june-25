@@ -2,6 +2,8 @@ import React from "react";
 import Question from "../../../common/Question";
 import { useSelector } from "react-redux";
 import { assesmentsSelector } from "../../../../store/features/assesments/selectors";
+import PreviousButton from "./PreviousButton";
+import NextButton from "./NextButton";
 
 function AssesmentQuestion() {
   const { questions, currentQuestionIndex } = useSelector(assesmentsSelector);
@@ -16,6 +18,11 @@ function AssesmentQuestion() {
           letUserAnswer: true,
         }}
       />
+
+      <div className="flex gap-2 mt-6 justify-end">
+        <PreviousButton />
+        <NextButton />
+      </div>
     </main>
   );
 }

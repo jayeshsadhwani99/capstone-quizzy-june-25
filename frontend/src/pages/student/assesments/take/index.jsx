@@ -5,11 +5,14 @@ import Loading from "../../../../components/common/Loading";
 import { useHeading } from "../../../../hooks";
 import Progress from "../../../../components/Student/TakeAssesment/Progress";
 import AssesmentQuestion from "../../../../components/Student/TakeAssesment/AssesmentQuestion";
+import { useSelector } from "react-redux";
+import { assesmentsSelector } from "../../../../store/features/assesments/selectors";
 
 function TakeAssesmentPage() {
   const { setHeading, setSubheading } = useHeading();
-  setHeading("Take Assesment");
-  setSubheading("This will test your knowledge of the subject");
+  const { title, description } = useSelector(assesmentsSelector);
+  setHeading(title || "Take Assesment");
+  setSubheading(description);
 
   const { id } = useParams();
   const { isLoading } = useGetAssesmentQuery(id, {
