@@ -14,9 +14,16 @@ function HandleQuestionRender({ question, letUserAnswer = false }) {
         />
       );
     case QuestionTypes.SHORT_ANSWER:
-      return <ShortAnswerQuestion letUserAnswer={letUserAnswer} />;
+      return (
+        <ShortAnswerQuestion
+          question={question}
+          letUserAnswer={letUserAnswer}
+        />
+      );
     case QuestionTypes.LONG_ANSWER:
-      return <LongAnswerQuestion letUserAnswer={letUserAnswer} />;
+      return (
+        <LongAnswerQuestion question={question} letUserAnswer={letUserAnswer} />
+      );
     default:
       return null;
   }
