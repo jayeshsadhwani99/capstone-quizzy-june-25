@@ -17,9 +17,9 @@ function StudentLayout() {
         <StudentSidebar />
       </aside>
 
-      <main className="flex-1 overflow-auto">
+      <main className="flex-1 flex flex-col overflow-auto">
         <Header />
-        <div className="p-2">
+        <div className="p-2 flex-1">
           <Outlet />
         </div>
       </main>

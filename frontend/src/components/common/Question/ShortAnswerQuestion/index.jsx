@@ -3,7 +3,7 @@ import CustomInput from "../../inputs/CustomInput";
 import { InputTypes } from "../../inputs/CustomInput/types";
 import { useState } from "react";
 
-function ShortAnswerQuestion() {
+function ShortAnswerQuestion({ letUserAnswer = false }) {
   const [answer, setAnswer] = useState("");
 
   return (
@@ -12,7 +12,7 @@ function ShortAnswerQuestion() {
       value={answer}
       onChange={setAnswer}
       placeholder="Enter your answer..."
-      disabled={true}
+      disabled={!letUserAnswer}
     />
   );
 }

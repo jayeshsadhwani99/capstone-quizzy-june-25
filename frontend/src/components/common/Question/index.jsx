@@ -4,8 +4,9 @@ import ExplanationComponent from "./components/ExplanationComponent/index.jsx";
 import AnswerComponent from "./components/AnswerComponent/index.jsx";
 import HintComponent from "./components/HintComponent/index.jsx";
 import { extractAnswer } from "./utils/extractAnswer.js";
+import { defaultQuestionConfig } from "./utils/index.js";
 
-function Question({ question }) {
+function Question({ question, config = defaultQuestionConfig }) {
   return (
     <div className="flex flex-col gap-4">
       {question.question && (
@@ -14,16 +15,23 @@ function Question({ question }) {
       <HintComponent hints={question.hints} />
 
       <div>
-        <HandleQuestionRender question={question} />
+        <HandleQuestionRender
+          question={question}
+          letUserAnswer={config.letUserAnswer}
+        />
       </div>
 
-      <div>
-        <AnswerComponent answer={extractAnswer(question)} />
-      </div>
+      {config.showAnswer && (
+        <div>
+          <AnswerComponent answer={extractAnswer(question)} />
+        </div>
+      )}
 
-      <div>
-        <ExplanationComponent explanations={question.explanations} />
-      </div>
+      {config.showExplanation && (
+        <div>
+          <ExplanationComponent explanations={question.explanations} />
+        </div>
+      )}
     </div>
   );
 }

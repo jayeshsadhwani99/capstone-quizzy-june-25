@@ -3,7 +3,7 @@ import { useState } from "react";
 import { InputTypes } from "../../inputs/CustomInput/types";
 import CustomInput from "../../inputs/CustomInput";
 
-function LongAnswerQuestion() {
+function LongAnswerQuestion({ letUserAnswer = false }) {
   const [answer, setAnswer] = useState("");
 
   return (
@@ -13,7 +13,7 @@ function LongAnswerQuestion() {
       onChange={setAnswer}
       placeholder="Enter your detailed answer..."
       className="h-[200px]"
-      disabled={true}
+      disabled={!letUserAnswer}
     />
   );
 }
