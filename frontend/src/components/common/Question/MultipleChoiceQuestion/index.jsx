@@ -24,7 +24,7 @@ function MultipleChoiceQuestion({ question }) {
   };
 
   const handleSelect = (option) => {
-    if (selectedOption === option) setSelectedOption(null);
+    if (selectedOption === option.label) setSelectedOption(null);
     else setSelectedOption(option);
   };
 
