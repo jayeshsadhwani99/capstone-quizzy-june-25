@@ -29,4 +29,9 @@ export const teacherRoutes = [
     path: "/teacher/assesments/:id",
     element: () => import("../pages/teacher/assesments/create"),
   },
+  // Submissions Pages
+  {
+    path: "/teacher/submissions",
+    element: () => import("../pages/teacher/submissions"),
+  },
 ];
