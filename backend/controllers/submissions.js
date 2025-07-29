@@ -68,7 +68,7 @@ export const startAssesment = async (req, res, next) => {
 
 export const getAllSubmissions = async (req, res, next) => {
   try {
-    const submissions = await Submission.find({});
+    const submissions = await Submission.find({}).populate("assesmentId");
 
     return res.status(200).json({
       success: true,
@@ -93,7 +93,7 @@ export const getSubmissionById = async (req, res, next) => {
       return next(error);
     }
 
-    const submission = await Submission.findById(id);
+    const submission = await Submission.findById(id).populate("assesmentId");
 
     return res.status(200).json({
       success: true,

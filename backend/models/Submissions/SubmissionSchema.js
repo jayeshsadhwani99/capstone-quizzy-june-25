@@ -24,7 +24,6 @@ const SubmissionSchema = new Schema(
     },
     maxMarks: {
       type: Number,
-      required: true,
     },
     status: {
       type: String,
@@ -43,10 +42,11 @@ const SubmissionSchema = new Schema(
 
 SubmissionSchema.pre("save", async function (next) {
   const assesment = await Assesment.findById(this.assesmentId);
-  this.maxMarks = (assesment.questions ?? [])?.reduce(
+  const maxMarks = (assesment.questions ?? [])?.reduce(
     (totalMarks, question) => totalMarks + question.marks,
     0,
   );
+  this.maxMarks = maxMarks;
   next();
 });
 
