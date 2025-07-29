@@ -20,7 +20,7 @@ const getAssesmentApi = apiSlice.injectEndpoints({
           }),
         );
       },
-      providesTags: ["Templates"],
+      providesTags: ["Assessments"],
     }),
   }),
 });
