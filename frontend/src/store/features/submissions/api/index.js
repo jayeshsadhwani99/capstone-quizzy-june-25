@@ -1,5 +1,5 @@
 export * from "./getAllSubmissionsApi";
 export * from "./getSubmissionApi";
 
-export * from "./startAssessmentApi";
-export * from "./submitAssessmentApi";
+export * from "./startAssesmentApi";
+export * from "./submitAssesmentApi";

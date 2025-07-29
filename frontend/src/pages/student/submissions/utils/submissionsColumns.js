@@ -15,8 +15,4 @@ export const submissionsColumns = [
     id: "submittedAt",
     label: "Submitted At",
   },
-  {
-    id: "actions",
-    label: "Actions",
-  },
 ];

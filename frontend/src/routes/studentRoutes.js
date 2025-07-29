@@ -11,4 +11,8 @@ export const studentRoutes = [
     path: "/student/assesments/:id",
     element: () => import("../pages/student/assesments/take"),
   },
+  {
+    path: "/student/submissions",
+    element: () => import("../pages/student/submissions"),
+  },
 ];

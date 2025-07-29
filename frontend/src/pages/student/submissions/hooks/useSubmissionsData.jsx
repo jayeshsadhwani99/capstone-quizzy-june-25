@@ -1,20 +1,21 @@
 import { useNavigate } from "react-router-dom";
-import { useGetAllAssesmentsQuery } from "../../../../store/features/assesments/api";
 import { EyeIcon } from "lucide-react";
+import { useGetAllSubmissionsQuery } from "../../../../store/features/submissions/api";
 
 export const useSubmissionsData = () => {
   const navigate = useNavigate();
-  const { data = [] } = useGetAllAssesmentsQuery();
+  const { data = [] } = useGetAllSubmissionsQuery();
 
-  const rows = data.map((assessment) => ({
-    ...assessment,
+  const rows = data.map((submission) => ({
+    ...submission,
+    assessment: submission.assesmentId?.title,
   }));
 
   const actions = [
     {
       icon: <EyeIcon size={20} className="text-blue-500" />,
       onClick: (row) => {
-        navigate(`/student/assesments/${row._id}`);
+        navigate(`/student/submissions/${row._id}`);
       },
     },
   ];
