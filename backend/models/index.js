@@ -5,3 +5,6 @@ export * from "./Template.js";
 
 // Assesments
 export * from "./Assesment/index.js";
+
+// Submissions
+export * from "./Submissions/index.js";

@@ -1,7 +1,11 @@
 import { config } from "dotenv";
 import express, { json } from "express";
 import { connect } from "mongoose";
-import { assessmentsRouter, templateRouter } from "./routes/index.js";
+import {
+  assessmentsRouter,
+  submissionsRouter,
+  templateRouter,
+} from "./routes/index.js";
 import { errorHandler } from "./utils/errorHandler.js";
 import cors from "cors";
 
@@ -19,6 +23,7 @@ connect(process.env.MONGODB_URI)
 
 app.use("/api/templates", templateRouter);
 app.use("/api/assessments", assessmentsRouter);
+app.use("/api/submissions", submissionsRouter);
 
 app.use(errorHandler);
 
