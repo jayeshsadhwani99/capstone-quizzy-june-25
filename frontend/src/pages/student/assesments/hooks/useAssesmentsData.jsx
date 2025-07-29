@@ -1,10 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { useGetAllAssesmentsQuery } from "../../../../store/features/assesments/api";
-import { EyeIcon } from "lucide-react";
+import { EyeIcon, Loader } from "lucide-react";
+import { useStartAssesmentMutation } from "../../../../store/features/submissions/api";
 
 export const useAssesmentsData = () => {
   const navigate = useNavigate();
   const { data = [] } = useGetAllAssesmentsQuery();
+  const [triggerStartAssesment, { isLoading }] = useStartAssesmentMutation();
 
   const rows = data.map((assessment) => ({
     ...assessment,
@@ -12,9 +14,19 @@ export const useAssesmentsData = () => {
 
   const actions = [
     {
-      icon: <EyeIcon size={20} className="text-blue-500" />,
-      onClick: (row) => {
-        navigate(`/student/assesments/${row._id}`);
+      icon: isLoading ? (
+        <Loader size={20} className="animate-spin" />
+      ) : (
+        <EyeIcon size={20} className="text-blue-500" />
+      ),
+      onClick: async (row) => {
+        if (isLoading) return;
+        const data = await triggerStartAssesment({
+          assesmentId: row._id,
+        }).unwrap();
+        navigate(
+          `/student/assesments/${row._id}?submissionId=${data.submission?._id}`,
+        );
       },
     },
   ];
