@@ -58,8 +58,14 @@ export const checkSubmissions = async () => {
       }
 
       submission.status = SubmissionStatusEnum.COMPLETED;
+      submission.totalMarks = answers.reduce(
+        (total, answer) => total + answer.marksAwarded,
+        0,
+      );
       await submission.save();
-      console.log("checkSubmissions:: submission completed", submission._id);
+      console.log("checkSubmissions:: submission completed: ", submission._id);
+      console.log("checkSubmissions:: max marks: ", submission.maxMarks);
+      console.log("checkSubmissions:: marks granted: ", submission.totalMarks);
     }
   } catch (error) {
     console.log("checkSubmissions:: CRON job failed", error);
