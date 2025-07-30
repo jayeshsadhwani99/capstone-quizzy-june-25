@@ -15,4 +15,8 @@ export const submissionsColumns = [
     id: "submittedAt",
     label: "Submitted At",
   },
+  {
+    id: "score",
+    label: "Score",
+  },
 ];
