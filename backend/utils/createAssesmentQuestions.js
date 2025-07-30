@@ -36,7 +36,7 @@ export const createAssesmentQuestions = async (assessment) => {
 
     return questions;
   } catch (error) {
-    throw new Error("Failed to create questiins from AI", {
+    throw new Error("Failed to create questions from AI", {
       cause: error,
     });
   }

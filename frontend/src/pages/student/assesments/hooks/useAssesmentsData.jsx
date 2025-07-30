@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useGetAllAssesmentsQuery } from "../../../../store/features/assesments/api";
-import { EyeIcon, Loader } from "lucide-react";
+import { Loader, Play } from "lucide-react";
 import { useStartAssesmentMutation } from "../../../../store/features/submissions/api";
 
 export const useAssesmentsData = () => {
@@ -17,7 +17,7 @@ export const useAssesmentsData = () => {
       icon: isLoading ? (
         <Loader size={20} className="animate-spin" />
       ) : (
-        <EyeIcon size={20} className="text-blue-500" />
+        <Play size={20} className="text-blue-500" />
       ),
       onClick: async (row) => {
         if (isLoading) return;

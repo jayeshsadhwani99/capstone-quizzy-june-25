@@ -8,6 +8,8 @@ import {
 } from "./routes/index.js";
 import { errorHandler } from "./utils/errorHandler.js";
 import cors from "cors";
+import cron from "node-cron";
+import { checkSubmissions } from "./cron/checkSubmissions.js";
 
 config();
 
@@ -31,6 +33,9 @@ app.use(errorHandler);
 app.get("/", (req, res) => {
   res.json({ message: "Quizzy API is up." });
 });
+
+// CRON JOBs
+cron.schedule("* * * * *", checkSubmissions);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () =>
