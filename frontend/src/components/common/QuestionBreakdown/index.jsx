@@ -3,7 +3,6 @@ import QuestionTitle from "./QuestionTitle";
 import QuestionDetails from "./QuestionDetails";
 
 function QuestionBreakdown({ data }) {
-  console.log("data", data);
   const questions = data?.assesmentId?.questions ?? [];
   const answers = data?.answers ?? [];
 
