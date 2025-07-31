@@ -10,6 +10,7 @@ import {
 } from "../../../store/features/common/commonSlice";
 import { useSelector } from "react-redux";
 import { ChevronRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 function StudentSidebar() {
   const { isSidebarOpen } = useSelector(commonSelector);
@@ -21,20 +22,22 @@ function StudentSidebar() {
 
   return (
     <div className="h-full w-full flex flex-col">
-      <div
-        className={`${
-          isSidebarOpen ? "p-4 pr-16" : "p-0"
-        } h-16 w-full border-b`}>
-        <img
-          src={
-            isSidebarOpen
-              ? "/logo/quizzy_horizontal.png"
-              : "/logo/quizzy_logo.png"
-          }
-          alt="Quizzy logo"
-          className="max-w-full"
-        />
-      </div>
+      <Link to={"/"}>
+        <div
+          className={`${
+            isSidebarOpen ? "p-4 pr-16" : "p-0"
+          } h-16 w-full border-b`}>
+          <img
+            src={
+              isSidebarOpen
+                ? "/logo/quizzy_horizontal.png"
+                : "/logo/quizzy_logo.png"
+            }
+            alt="Quizzy logo"
+            className="max-w-full"
+          />
+        </div>
+      </Link>
 
       <div className="flex flex-col flex-1">
         <div className="flex flex-col gap-2 p-2 border-b">
