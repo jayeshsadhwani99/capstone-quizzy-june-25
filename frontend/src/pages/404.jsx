@@ -1,9 +1,14 @@
 import React from "react";
 import CustomButton from "../components/common/CustomButton";
 import { useNavigate } from "react-router-dom";
+import { useHeading } from "../hooks";
 
 function NotFoundPage() {
   const navigate = useNavigate();
+  const { setHeading, setSubheading } = useHeading();
+
+  setHeading("404");
+  setSubheading("Page not found");
 
   const handleClick = () => {
     navigate("/", { replace: true });

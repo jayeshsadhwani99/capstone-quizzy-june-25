@@ -34,4 +34,8 @@ export const teacherRoutes = [
     path: "/teacher/submissions",
     element: () => import("../pages/teacher/submissions"),
   },
+  {
+    path: "/teacher/*",
+    element: () => import("../pages/404"),
+  },
 ];
