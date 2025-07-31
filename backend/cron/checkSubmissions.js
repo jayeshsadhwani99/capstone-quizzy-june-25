@@ -36,25 +36,27 @@ export const checkSubmissions = async () => {
         undeterminedQuestions.push(...questionsToBeCheckedByAI);
       }
 
-      const submissionFeedbacks = await checkSubmissionQuestions(
-        undeterminedQuestions,
-      );
-
-      for (const feedback of submissionFeedbacks) {
-        const {
-          questionId,
-          marksAwarded,
-          feedback: submissionFeedback,
-        } = feedback;
-
-        const answer = answers.find(
-          (a) => a.questionId.toString() === questionId.toString(),
+      if (undeterminedQuestions.length > 0) {
+        const submissionFeedbacks = await checkSubmissionQuestions(
+          undeterminedQuestions,
         );
 
-        if (!answer) continue;
+        for (const feedback of submissionFeedbacks) {
+          const {
+            questionId,
+            marksAwarded,
+            feedback: submissionFeedback,
+          } = feedback;
 
-        answer.marksAwarded = marksAwarded;
-        answer.feedback = submissionFeedback;
+          const answer = answers.find(
+            (a) => a.questionId.toString() === questionId.toString(),
+          );
+
+          if (!answer) continue;
+
+          answer.marksAwarded = marksAwarded;
+          answer.feedback = submissionFeedback;
+        }
       }
 
       submission.status = SubmissionStatusEnum.COMPLETED;
