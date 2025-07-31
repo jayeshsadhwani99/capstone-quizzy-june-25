@@ -1,5 +1,9 @@
 export const studentRoutes = [
   {
+    path: "/student",
+    element: () => import("../pages/student"),
+  },
+  {
     path: "/student/dashboard",
     element: () => import("../pages/student/dashboard"),
   },
