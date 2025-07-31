@@ -1,11 +1,14 @@
 import React from "react";
 import { getMarksStyling } from "./utils";
+import { ChevronDown, ChevronRight } from "lucide-react";
 
-function QuestionTitle({ question, index, answers }) {
+function QuestionTitle({ question, index, answers, toggle, isVisible }) {
   const answer = answers.find((answer) => answer.questionId === question._id);
 
   return (
-    <div className="border p-4 rounded flex justify-between items-center">
+    <div
+      onClick={toggle}
+      className="border p-4 rounded flex justify-between items-center gap-2 cursor-pointer hover:bg-gray-50 transition-all">
       <p className="flex-1 truncate">
         Q{index + 1}. {question.question}
       </p>
@@ -16,6 +19,10 @@ function QuestionTitle({ question, index, answers }) {
           question.marks,
         )} text-sm bg-gray-100 p-2 rounded-md w-fit shrink-0 font-semibold`}>
         {answer.marksAwarded} / {question.marks}
+      </div>
+
+      <div>
+        {isVisible ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
       </div>
     </div>
   );

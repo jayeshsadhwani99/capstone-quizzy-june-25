@@ -1,6 +1,5 @@
 import React from "react";
-import QuestionTitle from "./QuestionTitle";
-import QuestionDetails from "./QuestionDetails";
+import QuestionAccordion from "./QuestionAccordion";
 
 function QuestionBreakdown({ data }) {
   const questions = data?.assesmentId?.questions ?? [];
@@ -12,15 +11,12 @@ function QuestionBreakdown({ data }) {
 
       <div className="flex flex-col gap-2">
         {questions.map((question, index) => (
-          <>
-            <QuestionTitle
-              question={question}
-              index={index}
-              answers={answers}
-              key={question._id}
-            />
-            <QuestionDetails question={question} answers={answers} />
-          </>
+          <QuestionAccordion
+            question={question}
+            index={index}
+            answers={answers}
+            key={question._id}
+          />
         ))}
       </div>
     </div>

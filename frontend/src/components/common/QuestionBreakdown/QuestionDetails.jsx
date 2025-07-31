@@ -5,7 +5,7 @@ function QuestionDetails({ question, answers }) {
   const answer = answers.find((answer) => answer.questionId === question._id);
 
   return (
-    <div className="bg-gray-50 p-2 rounded-md flex flex-col gap-2">
+    <div className="bg-gray-50 p-2 rounded-md flex flex-col gap-2 border border-t-0">
       <div>
         <h3 className="font-semibold text-base">Question:</h3>
         {question.question}
