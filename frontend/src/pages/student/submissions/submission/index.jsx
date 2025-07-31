@@ -5,6 +5,7 @@ import { useGetSubmissionQuery } from "../../../../store/features/submissions/ap
 import Loading from "../../../../components/common/Loading";
 import StudentMetrics from "../../../../components/common/StudentMetrics";
 import QuestionBreakdown from "../../../../components/common/QuestionBreakdown";
+import { SubmissionTypes } from "../../../../types";
 
 function SubmissionPage() {
   const { setHeading, setSubheading } = useHeading();
@@ -22,7 +23,9 @@ function SubmissionPage() {
 
   return (
     <div>
-      <StudentMetrics data={data} />
+      {data.status === SubmissionTypes.COMPLETED && (
+        <StudentMetrics data={data} />
+      )}
       <QuestionBreakdown data={data} />
     </div>
   );

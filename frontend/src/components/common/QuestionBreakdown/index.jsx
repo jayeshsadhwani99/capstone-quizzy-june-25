@@ -1,5 +1,6 @@
 import React from "react";
 import QuestionAccordion from "./QuestionAccordion";
+import { SubmissionTypes } from "../../../types";
 
 function QuestionBreakdown({ data }) {
   const questions = data?.assesmentId?.questions ?? [];
@@ -7,7 +8,11 @@ function QuestionBreakdown({ data }) {
 
   return (
     <div className="mt-4">
-      <h2 className="text-lg font-semibold">Question Breakdown</h2>
+      {data.status === SubmissionTypes.COMPLETED ? (
+        <h2 className="text-lg font-semibold">Question Breakdown</h2>
+      ) : (
+        <h2 className="text-lg font-semibold">Your Answers</h2>
+      )}
 
       <div className="flex flex-col gap-2">
         {questions.map((question, index) => (
