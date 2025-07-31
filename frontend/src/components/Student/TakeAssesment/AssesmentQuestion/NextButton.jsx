@@ -36,7 +36,7 @@ function NextButton() {
           body: {
             responses: Object.entries(answers).map(([key, value]) => ({
               questionId: key,
-              response: JSON.stringify(value),
+              response: value.response,
             })),
           },
         }).unwrap();
