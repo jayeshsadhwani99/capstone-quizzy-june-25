@@ -20,6 +20,10 @@ export const studentRoutes = [
     element: () => import("../pages/student/submissions"),
   },
   {
+    path: "/student/submissions/:id",
+    element: () => import("../pages/student/submissions/submission"),
+  },
+  {
     path: "/student/*",
     element: () => import("../pages/404"),
   },
